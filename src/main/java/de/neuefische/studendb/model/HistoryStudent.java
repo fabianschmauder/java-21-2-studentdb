@@ -20,6 +20,11 @@ public class HistoryStudent implements Student {
         return name;
     }
 
+    @Override
+    public String calculateGrade() {
+        return "7";
+    }
+
     public String getId() {
         return id;
     }

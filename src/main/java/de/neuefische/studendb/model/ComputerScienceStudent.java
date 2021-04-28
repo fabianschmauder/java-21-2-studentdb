@@ -18,6 +18,11 @@ public class ComputerScienceStudent implements Student{
         return name;
     }
 
+    @Override
+    public String calculateGrade() {
+        return "3";
+    }
+
     public void setName(String name) {
         this.name = name;
     }

@@ -19,6 +19,14 @@ public class AppMain {
             System.out.println(studentDb.randomStudent());
         }
 
+        for (Student student : students) {
+            printStudentGrade(student);
+        }
+
+    }
+
+    private static void printStudentGrade(Student student){
+        System.out.println("Grade: "+ student.calculateGrade());
     }
 
 }
