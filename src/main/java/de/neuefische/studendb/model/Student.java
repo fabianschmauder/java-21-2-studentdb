@@ -2,7 +2,7 @@ package de.neuefische.studendb.model;
 
 import java.util.Objects;
 
-public class Student {
+public abstract class Student {
 
     private String name;
     private String id;
@@ -27,6 +27,8 @@ public class Student {
     public void setId(String id) {
         this.id = id;
     }
+
+    public abstract String getCourse();
 
     @Override
     public boolean equals(Object o) {

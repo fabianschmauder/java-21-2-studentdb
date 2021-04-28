@@ -1,5 +1,6 @@
 package de.neuefische.studendb.db;
 
+import de.neuefische.studendb.model.HistoryStudent;
 import de.neuefische.studendb.model.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,18 +17,18 @@ class StudentDbTest {
         return new Arguments[]{
                 Arguments.of(
                         new Student[]{
-                                new Student("Student 1", "1"),
-                                new Student("Student 2", "2")
+                                new HistoryStudent("Student 1", "1","c#"),
+                                new HistoryStudent("Student 2", "2","c#")
                         },
                         new Student[]{
-                                new Student("Student 1", "1"),
-                                new Student("Student 2", "2"),
-                                new Student("Jane", "42")
+                                new HistoryStudent("Student 1", "1","c#"),
+                                new HistoryStudent("Student 2", "2","c#"),
+                                new HistoryStudent("Jane", "42","c#")
                         }
                 ),
                 Arguments.of(
                         new Student[]{},
-                        new Student[]{new Student("Jane", "42")}
+                        new Student[]{new HistoryStudent("Jane", "42","c#")}
                 )
         };
     }
@@ -36,45 +37,45 @@ class StudentDbTest {
         return new Arguments[]{
                 Arguments.of(
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Jane", "42"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Jane", "42","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         },
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         }
                 ),
                 Arguments.of(
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         },
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         }
                 ),
                 Arguments.of(
                         new Student[]{
-                                new Student("Jane", "42"),
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Jane", "42","c#"),
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         },
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         }
                 ),
                 Arguments.of(
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23"),
-                                new Student("Jane", "42")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#"),
+                                new HistoryStudent("Jane", "42","c#")
                         },
                         new Student[]{
-                                new Student("Hans", "12"),
-                                new Student("Peter", "23")
+                                new HistoryStudent("Hans", "12","c#"),
+                                new HistoryStudent("Peter", "23","c#")
                         }
                 ),
                 Arguments.of(
@@ -82,7 +83,7 @@ class StudentDbTest {
                         new Student[]{}
                 ),
                 Arguments.of(
-                        new Student[]{new Student("Jane", "42")},
+                        new Student[]{new HistoryStudent("Jane", "42","c#")},
                         new Student[]{}
                 )
         };
@@ -93,9 +94,9 @@ class StudentDbTest {
     public void testList() {
         // Given
         Student[] students = new Student[]{
-                new Student("Jane", "42"),
-                new Student("Klaus", "13"),
-                new Student("Franky", "100")
+                new HistoryStudent("Jane", "42","c#"),
+                new HistoryStudent("Klaus", "13","c#"),
+                new HistoryStudent("Franky", "100","c#")
         };
         StudentDb studentDb = new StudentDb(students);
 
@@ -104,9 +105,9 @@ class StudentDbTest {
 
         // Then
         Student[] expected = new Student[]{
-                new Student("Jane", "42"),
-                new Student("Klaus", "13"),
-                new Student("Franky", "100")
+                new HistoryStudent("Jane", "42","c#"),
+                new HistoryStudent("Klaus", "13","c#"),
+                new HistoryStudent("Franky", "100","c#")
         };
         assertArrayEquals(expected, actual);
     }
@@ -116,9 +117,9 @@ class StudentDbTest {
     public void testToString() {
         // Given
         Student[] students = new Student[]{
-                new Student("Jane", "42"),
-                new Student("Klaus", "13"),
-                new Student("Franky", "100")
+                new HistoryStudent("Jane", "42","c#"),
+                new HistoryStudent("Klaus", "13","c#"),
+                new HistoryStudent("Franky", "100","c#")
         };
         StudentDb studentDb = new StudentDb(students);
 
@@ -137,7 +138,7 @@ class StudentDbTest {
     public void testAdd(Student[] givenStudents, Student[] expectedStudents) {
         // Given
         StudentDb studentDb = new StudentDb(givenStudents);
-        Student student = new Student("Jane", "42");
+        Student student = new HistoryStudent("Jane", "42","c#");
 
         // When
         studentDb.add(student);
@@ -154,7 +155,7 @@ class StudentDbTest {
         StudentDb studentDb = new StudentDb(givenStudents);
 
         // When
-        studentDb.remove(new Student("Jane", "42"));
+        studentDb.remove(new HistoryStudent("Jane", "42","c#"));
         Student[] actualStudents = studentDb.list();
 
         // Then
